@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body th:replace="layout :: body">
+<div>
+    <h2 class="text-xl font-bold mb-4">Course Details</h2>
+    <p><strong>Name:</strong> <span th:text="${curso.name}"></span></p>
+    <p><strong>Category:</strong> <span th:text="${curso.category}"></span></p>
+    <p><strong>Professor:</strong> <span th:text="${curso.professor}"></span></p>
+    <div>
+        <a th:href="@{/cursos/{id}/edit(id=${curso.id})}" class="bg-yellow-500 text-white px-4 py-2 rounded">Edit</a>
+        <a th:href="@{/cursos/{id}/delete(id=${curso.id})}" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Delete</a>
+        <a href="/cursos" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Back</a>
+    </div>
+</div>
+</body>
+</html>

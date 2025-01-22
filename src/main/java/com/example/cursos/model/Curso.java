@@ -8,13 +8,14 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Curso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String category;
-
+    private String professor;
     private boolean active = true;
 
     @CreationTimestamp
@@ -48,6 +49,14 @@ public class Curso {
         this.category = category;
     }
 
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -60,15 +69,7 @@ public class Curso {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body th:replace="layout :: body">
+<div>
+    <h2 class="text-xl font-bold mb-4">Available Courses</h2>
+    <a href="/cursos/novo" class="bg-blue-500 text-white px-4 py-2 rounded">Add New Course</a>
+    <table class="table-auto w-full bg-white mt-4 shadow-md rounded">
+        <thead>
+        <tr>
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Category</th>
+            <th class="px-4 py-2">Professor</th>
+            <th class="px-4 py-2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+            <td th:text="${curso.name}" class="px-4 py-2"></td>
+            <td th:text="${curso.category}" class="px-4 py-2"></td>
+            <td th:text="${curso.professor}" class="px-4 py-2"></td>
+            <td class="px-4 py-2">
+                <a th:href="@{/cursos/{id}(id=${curso.id})}" class="text-blue-500">View</a>
+                <a th:href="@{/cursos/{id}/edit(id=${curso.id})}" class="text-yellow-500 ml-2">Edit</a>
+                <a th:href="@{/cursos/{id}/delete(id=${curso.id})}" class="text-red-500 ml-2">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

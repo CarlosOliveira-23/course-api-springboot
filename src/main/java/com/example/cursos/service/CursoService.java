@@ -6,7 +6,6 @@ import com.example.cursos.repository.CursoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -20,6 +19,7 @@ public class CursoService {
         Curso curso = new Curso();
         curso.setName(dto.name());
         curso.setCategory(dto.category());
+        curso.setProfessor(dto.professor());
         return cursoRepository.save(curso);
     }
 
@@ -41,6 +41,9 @@ public class CursoService {
         if (dto.category() != null) {
             curso.setCategory(dto.category());
         }
+        if (dto.professor() != null) {
+            curso.setProfessor(dto.professor());
+        }
         return cursoRepository.save(curso);
     }
 
@@ -48,10 +51,8 @@ public class CursoService {
         cursoRepository.deleteById(id);
     }
 
-    public Curso toggleAtivo(Long id) {
-        Curso curso = cursoRepository.findById(id)
+    public Curso buscarPorId(Long id) {
+        return cursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
-        curso.setActive(!curso.isActive());
-        return cursoRepository.save(curso);
     }
 }

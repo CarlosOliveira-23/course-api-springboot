@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body th:replace="layout :: body">
+<div>
+    <h2 class="text-xl font-bold mb-4" th:text="${curso.id != null ? 'Edit Course' : 'New Course'}"></h2>
+    <form th:action="@{/cursos}" th:object="${curso}" method="post">
+        <div class="mb-4">
+            <label for="name" class="block">Name</label>
+            <input type="text" id="name" name="name" th:field="*{name}" class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="category" class="block">Category</label>
+            <input type="text" id="category" name="category" th:field="*{category}" class="w-full p-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="professor" class="block">Professor</label>
+            <input type="text" id="professor" name="professor" th:field="*{professor}" class="w-full p-2 border rounded">
+        </div>
+        <div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+            <a href="/cursos" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
